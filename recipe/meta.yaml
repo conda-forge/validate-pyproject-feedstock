@@ -1,5 +1,5 @@
 {% set name = "validate-pyproject" %}
-{% set version = "0.19" %}
+{% set version = "0.20.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: c2d99f46fcba3231492ec39d0870fc6cba1415a0d89f2622fcb4a1d3d5a9f7bf
+  sha256: 871946e44b9c35c39eab2431e2d3e54d2657c01ffdfce1ff8e0fcb2fa0261e15
 
 build:
   entry_points:

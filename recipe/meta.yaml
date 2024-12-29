@@ -6,28 +6,25 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/validate_pyproject-{{ version }}.tar.gz
   sha256: 12b2714bf647265c60e4f24a20674428bd891a8aa168a1be535bb99f8c0af0e3
 
 build:
   entry_points:
-    - validate-pyproject=validate_pyproject.cli:main
+    - validate-pyproject = validate_pyproject.cli:main
   noarch: python
-  script:
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 1
 
 requirements:
   host:
     - python {{ python_min }}
-    - setuptools >=46.1.0
+    - setuptools >=61.2.0
     - setuptools-scm >=7.1
     - pip
   run:
     - python >={{ python_min }}
     - python-fastjsonschema >=2.16.2,<=3
-    - importlib-resources
-    - importlib-metadata
 
 test:
   imports:
@@ -46,6 +43,12 @@ about:
   license_file:
     - NOTICE.txt
     - LICENSE.txt
+    - src/validate_pyproject/pre_compile/NOTICE.template
+    - tests/invalid-examples/pdm/LICENSE
+    - tests/examples/flit/LICENSE
+    - tests/examples/atoml/LICENSE
+    - tests/examples/trampolim/LICENSE
+    - tests/examples/pdm/LICENSE
 
 extra:
   recipe-maintainers:

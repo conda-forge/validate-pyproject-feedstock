@@ -1,13 +1,13 @@
 {% set name = "validate-pyproject" %}
-{% set version = "0.25" %}
+{% set version = "0.26" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/validate_pyproject-{{ version }}.tar.gz
-  sha256: e68c12d1cb0d8ddc269ffc42875a81727ddb7865000aa6d2f77d833b55c53f0b
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/validate_pyproject-{{ version }}.tar.gz
+  sha256: eb3e48eeed404761ca4bb45a91d1fa82d83bbaf3aedcfca4ee9483b4bb3e2b9e
 
 build:
   entry_points:
@@ -24,7 +24,11 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - python-fastjsonschema <=3,>=2.16.2
+    - python-fastjsonschema !=2.22.0,<=3,>=2.16.2
+    # - validate-pyproject-schema-store 
+    # - trove-classifiers >=2021.10.20
+    # - tomli >=1.2.1
+    # - packaging >=24.2
     # - validate-pyproject-schema-store 
     # - trove-classifiers >=2021.10.20
     # - tomli >=1.2.1
